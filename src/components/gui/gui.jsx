@@ -86,9 +86,11 @@ const GUIComponent = props => {
         isPlayerOnly,
         isRtl,
         isShared,
+        isTelemetryEnabled,
         loading,
         logo,
         renderLogin,
+        onClickAbout,
         onClickAccountNav,
         onCloseAccountNav,
         onLogOut,
@@ -105,6 +107,7 @@ const GUIComponent = props => {
         onRequestCloseTelemetryModal,
         onSeeCommunity,
         onShare,
+        onShowPrivacyPolicy,
         onStartSelectingFileUpload,
         onTelemetryModalCancel,
         onTelemetryModalOptIn,
@@ -159,10 +162,13 @@ const GUIComponent = props => {
             >
                 {telemetryModalVisible ? (
                     <TelemetryModal
+                        isRtl={isRtl}
+                        isTelemetryEnabled={isTelemetryEnabled}
                         onCancel={onTelemetryModalCancel}
                         onOptIn={onTelemetryModalOptIn}
                         onOptOut={onTelemetryModalOptOut}
                         onRequestClose={onRequestCloseTelemetryModal}
+                        onShowPrivacyPolicy={onShowPrivacyPolicy}
                     />
                 ) : null}
                 {loading ? (
@@ -219,6 +225,7 @@ const GUIComponent = props => {
                     logo={logo}
                     renderLogin={renderLogin}
                     showComingSoon={showComingSoon}
+                    onClickAbout={onClickAbout}
                     onClickAccountNav={onClickAccountNav}
                     onClickLogo={onClickLogo}
                     onCloseAccountNav={onCloseAccountNav}
@@ -334,6 +341,7 @@ const GUIComponent = props => {
 
                         <Box className={classNames(styles.stageAndTargetWrapper, styles[stageSize])}>
                             <StageWrapper
+                                isFullScreen={isFullScreen}
                                 isRendererSupported={isRendererSupported}
                                 isRtl={isRtl}
                                 stageSize={stageSize}
@@ -401,6 +409,7 @@ GUIComponent.propTypes = {
     onRequestCloseTelemetryModal: PropTypes.func,
     onSeeCommunity: PropTypes.func,
     onShare: PropTypes.func,
+    onShowPrivacyPolicy: PropTypes.func,
     onStartSelectingFileUpload: PropTypes.func,
     onTabSelect: PropTypes.func,
     onTelemetryModalCancel: PropTypes.func,
